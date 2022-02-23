@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { HelloWorldService } from 'utils';
 import { CounterComponent } from './counter/counter.component';
 

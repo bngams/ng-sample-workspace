@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
-import { UtilsComponent } from './utils.component';
-
-
+import { AuthModule } from './auth/auth.module';
+import { HelloWorldService } from './hello-world.service';
 
 @NgModule({
   declarations: [
-    UtilsComponent
   ],
   imports: [
   ],
   exports: [
-    UtilsComponent
+    AuthModule
+  ],
+  providers: [
+    HelloWorldService
   ]
 })
 export class UtilsModule { }

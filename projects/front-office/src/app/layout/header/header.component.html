@@ -8,6 +8,9 @@
   <span class="menu-item" routerLink="/home" routerLinkActive="active">Home</span>
   <span class="menu-item" routerLink="/posts" routerLinkActive="active">Posts</span>
   <span class="menu-item" routerLink="/account" routerLinkActive="active">Account</span>
-  <span class="menu-item">Login</span>
-  <span class="menu-item">Logout</span>
+  <span class="menu-item" routerLink="/auth" *ngIf="!isLoggedIn else logoutEl">Login</span>
+  <ng-template #logoutEl>
+    <span class="menu-item" (click)="logout()">Logout</span>
+  </ng-template>
+
 </mat-toolbar>

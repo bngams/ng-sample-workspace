@@ -13,6 +13,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { GetStartedComponent } from './components/get-started/get-started.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CommonModule } from '@angular/common';
+import { AuthModule, HelloWorldService, UtilsModule } from 'utils';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    VendorsModule
+    VendorsModule,
+    UtilsModule,
+    HttpClientModule,
+    AuthModule
   ],
   exports: [],
   providers: [],
