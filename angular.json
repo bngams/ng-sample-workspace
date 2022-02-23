@@ -1,7 +1,283 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "front-office": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/front-office",
+      "sourceRoot": "projects/front-office/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/front-office",
+            "index": "projects/front-office/src/index.html",
+            "main": "projects/front-office/src/main.ts",
+            "polyfills": "projects/front-office/src/polyfills.ts",
+            "tsConfig": "projects/front-office/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/front-office/src/favicon.ico",
+              "projects/front-office/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/front-office/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/front-office/src/environments/environment.ts",
+                  "with": "projects/front-office/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "front-office:build:production"
+            },
+            "development": {
+              "browserTarget": "front-office:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "front-office:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/front-office/src/test.ts",
+            "polyfills": "projects/front-office/src/polyfills.ts",
+            "tsConfig": "projects/front-office/tsconfig.spec.json",
+            "karmaConfig": "projects/front-office/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/front-office/src/favicon.ico",
+              "projects/front-office/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/front-office/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "back-office": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/back-office",
+      "sourceRoot": "projects/back-office/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/back-office",
+            "index": "projects/back-office/src/index.html",
+            "main": "projects/back-office/src/main.ts",
+            "polyfills": "projects/back-office/src/polyfills.ts",
+            "tsConfig": "projects/back-office/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/back-office/src/favicon.ico",
+              "projects/back-office/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/back-office/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/back-office/src/environments/environment.ts",
+                  "with": "projects/back-office/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "back-office:build:production"
+            },
+            "development": {
+              "browserTarget": "back-office:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "back-office:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/back-office/src/test.ts",
+            "polyfills": "projects/back-office/src/polyfills.ts",
+            "tsConfig": "projects/back-office/tsconfig.spec.json",
+            "karmaConfig": "projects/back-office/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/back-office/src/favicon.ico",
+              "projects/back-office/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/back-office/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "utils": {
+      "projectType": "library",
+      "root": "projects/utils",
+      "sourceRoot": "projects/utils/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/utils/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/utils/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/utils/src/test.ts",
+            "tsConfig": "projects/utils/tsconfig.spec.json",
+            "karmaConfig": "projects/utils/karma.conf.js"
+          }
+        }
+      }
+    },
+    "vendors": {
+      "projectType": "library",
+      "root": "projects/vendors",
+      "sourceRoot": "projects/vendors/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/vendors/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/vendors/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/vendors/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/vendors/src/test.ts",
+            "tsConfig": "projects/vendors/tsconfig.spec.json",
+            "karmaConfig": "projects/vendors/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "front-office"
 }
